@@ -1,8 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+      })
+      .catch(error => console.error(error))
+  }
+
   return (
     <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
       <div className='relative flex items-center justify-between'>
@@ -21,7 +32,7 @@ const Header = () => {
             <path d='M18.266 26.068l7.839-7.854 4.469 4.479c1.859 1.859 1.859 4.875 0 6.734l-1.104 1.104c-1.859 1.865-4.875 1.865-6.734 0zM30.563 2.531l-1.109-1.104c-1.859-1.859-4.875-1.859-6.734 0l-6.719 6.734-6.734-6.734c-1.859-1.859-4.875-1.859-6.734 0l-1.104 1.104c-1.859 1.859-1.859 4.875 0 6.734l6.734 6.734-6.734 6.734c-1.859 1.859-1.859 4.875 0 6.734l1.104 1.104c1.859 1.859 4.875 1.859 6.734 0l21.307-21.307c1.859-1.859 1.859-4.875 0-6.734z'></path>
           </svg>
           <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
-          Motor Complex
+            Motor Complex
           </span>
         </Link>
         <ul className='flex items-center hidden space-x-8 lg:flex'>
@@ -65,16 +76,44 @@ const Header = () => {
               About Us
             </Link>
           </li>
-          <li>
-            <Link
-              to='/login'
-              aria-label='login'
-              title='login'
-              className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-            >
-              Login
-            </Link>
-          </li>
+          {
+            !user?.uid ?
+              <li>
+                <Link
+                  to='/login'
+                  aria-label='login'
+                  title='login'
+                  className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                >
+                  Login
+                </Link>
+              </li>
+              :
+
+              <>
+                <li>
+                  <Link
+                    to='/dashboard'
+                    aria-label='dashboard'
+                    title='dashboard'
+                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                  >
+                    DashBoard
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={handleLogOut}
+                    aria-label='logout'
+                    title='logout'
+                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                  >
+                    Logout
+                  </Link>
+                </li>
+
+              </>
+          }
         </ul>
         <div className='lg:hidden'>
           <button
@@ -118,7 +157,7 @@ const Header = () => {
                         <path d='M18.266 26.068l7.839-7.854 4.469 4.479c1.859 1.859 1.859 4.875 0 6.734l-1.104 1.104c-1.859 1.865-4.875 1.865-6.734 0zM30.563 2.531l-1.109-1.104c-1.859-1.859-4.875-1.859-6.734 0l-6.719 6.734-6.734-6.734c-1.859-1.859-4.875-1.859-6.734 0l-1.104 1.104c-1.859 1.859-1.859 4.875 0 6.734l6.734 6.734-6.734 6.734c-1.859 1.859-1.859 4.875 0 6.734l1.104 1.104c1.859 1.859 4.875 1.859 6.734 0l21.307-21.307c1.859-1.859 1.859-4.875 0-6.734z'></path>
                       </svg>
                       <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
-                      Motor Complex
+                        Motor Complex
                       </span>
                     </Link>
                   </div>
@@ -170,16 +209,43 @@ const Header = () => {
                         About Us
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        to='/login'
-                        aria-label='login'
-                        title='login'
-                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                      >
-                       Login
-                      </Link>
-                    </li>
+                    {
+                      !user?.uid ?
+                        <li>
+                          <Link
+                            to='/login'
+                            aria-label='login'
+                            title='login'
+                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                          >
+                            Login
+                          </Link>
+                        </li>
+                        :
+                        <>
+                          <li>
+                            <Link
+                              to='/dashboard'
+                              aria-label='dashboard'
+                              title='dashboard'
+                              className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                            >
+                              DashBoard
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              onClick={handleLogOut}
+                              aria-label='logout'
+                              title='logout'
+                              className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                            >
+                              Logout
+                            </Link>
+                          </li>
+
+                        </>
+                    }
                   </ul>
                 </nav>
               </div>
