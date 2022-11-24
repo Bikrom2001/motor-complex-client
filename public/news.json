@@ -1,0 +1,110 @@
+[
+  {
+    "category_id": "01",
+    "title": "Audi e-tron Sportback",
+    "location": "United States",
+    "resale_price": "33,500",
+    "original_price": "40,600",
+    "years_use": "2",
+    "published_date": "2022-11-24 17:27:34",
+    "author_name": "Jimmy Dane",
+    "details": "The Audi e-tron Sportback is an all-electric SUV coupe.",
+    "img": "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "01",
+    "title": "Ford Mustang Mach-e",
+    "location": "London, UK",
+    "resale_price": "30,500",
+    "original_price": "50,600",
+    "years_use": "3",
+    "published_date": "2022-10-24 17:27:34",
+    "author_name": "Kindel Media",
+    "details": "The Ford Mustang Mach-e is an all-electric SUV.",
+    "img": "https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "01",
+    "title": "Hyundai KONA Electric",
+    "location": "Chinatown, London",
+    "resale_price": "25,500",
+    "original_price": "40,600",
+    "years_use": "3.6",
+    "published_date": "2022-09-23 17:27:34",
+    "author_name": "Motor Group",
+    "details": "The Hyundai KONA Electric is an all-electric subcompact SUV.",
+    "img": "https://images.pexels.com/photos/12163946/pexels-photo-12163946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "02",
+    "title": "Volkswagen Transporter (T4)",
+    "location": "London",
+    "resale_price": "23,500",
+    "original_price": "30,600",
+    "years_use": "2",
+    "published_date": "2022-06-23 17:27:34",
+    "author_name": "Panel Van",
+    "details": " It was available in many forms and sizes as standard and formed ",
+    "img": "https://images.pexels.com/photos/594384/van-vw-travel-trip-594384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "02",
+    "title": "Megabus UK & Europe",
+    "location": "Europe",
+    "resale_price": "33,500",
+    "original_price": "50,600",
+    "years_use": "5",
+    "published_date": "2022-05-23 17:27:34",
+    "author_name": "Christopher N",
+    "details": " Home to the vast majority of embassies and diplomatic",
+    "img": "https://images.pexels.com/photos/9993531/pexels-photo-9993531.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "02",
+    "title": "Hyundai H1 Microbus",
+    "location": "Indian",
+    "resale_price": "22,500",
+    "original_price": "30,600",
+    "years_use": "6",
+    "published_date": "2022-09-23 17:27:34",
+    "author_name": "Magda Ehlers",
+    "details": " The Hyundai H1 Microbus has Diesel and Gasoline(Petrol) engines",
+    "img": "https://images.pexels.com/photos/7509252/pexels-photo-7509252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "03",
+    "title": "Bentley Continental GT",
+    "location": "UK",
+    "resale_price": "40,500",
+    "original_price": "60,600",
+    "years_use": "1",
+    "published_date": "2022-11-23 17:27:34",
+    "author_name": "Ishan Kulshrestha",
+    "details": " The Bentley Continental GT may be built on Porsche Panamera",
+    "img": "https://images.pexels.com/photos/8641224/pexels-photo-8641224.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "03",
+    "title": "Rolls-Royce Phantom",
+    "location": "United Arab Emirates",
+    "resale_price": "45,500",
+    "original_price": "55,600",
+    "years_use": "2",
+    "published_date": "2022-10-23 17:27:34",
+    "author_name": "Abdul Rahman",
+    "details": " There’s no doubt that the Phantom is an incredible car",
+    "img": "https://images.pexels.com/photos/5046370/pexels-photo-5046370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "category_id": "03",
+    "title": "Bentley Flying Spur",
+    "location": "Russia",
+    "resale_price": "29,500",
+    "original_price": "40,600",
+    "years_use": "2.9",
+    "published_date": "2022-08-23 17:27:34",
+    "author_name": "Tima Miroshnichenko",
+    "details": " Luxury and performance are qualities synonymous with Bentley motor cars",
+    "img": "https://images.pexels.com/photos/6872163/pexels-photo-6872163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }
+]

@@ -1,0 +1,18 @@
+[
+    {
+      "cat_id": "01",
+      "name": "Electric Cars",
+      "img": "https://images.pexels.com/photos/5229623/pexels-photo-5229623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "cat_id": "02",
+      "name": "Microbus Cars",
+      "img": "https://images.pexels.com/photos/11139395/pexels-photo-11139395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    {
+      "cat_id": "03",
+      "name": "Luxury Cars",
+      "img": "https://images.pexels.com/photos/2127037/pexels-photo-2127037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    }
+    
+  ]
