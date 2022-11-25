@@ -27,7 +27,7 @@ const SignUp = () => {
             }
             updateUser(userInfo)
                 .then(() => {
-                   
+                    saveUserDatabase(data.name, data.email, data.accountName);
                  })
                 .catch(err => console.log(err));
             
@@ -50,21 +50,22 @@ const SignUp = () => {
         .catch(error => console.error(error))
     }
 
-    // const saveUserDatabase = (name, email) => {
-    //     const user = {name, email};
-    //     fetch(`http://localhost:5000/users`, {
-    //         method: "POST",
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setCreateUserEmail(email);
+    const saveUserDatabase = (name, email, accountName) => {
+        const user = {name, email, accountName};
+        fetch(`http://localhost:5000/users`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            // setCreateUserEmail(email);
+            console.log(data);
 
-    //     })
-    // }
+        })
+    }
 
 
     return (
@@ -98,6 +99,7 @@ const SignUp = () => {
                         <select
                             {...register("accountName", { required: "users is required" })}
                             className="select select-bordered w-full  text-black">
+                                <option disabled>select Creates</option>
                             <option>Seller</option>
                             <option>Buyer</option>
                         </select>
