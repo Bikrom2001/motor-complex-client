@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../BookingModal/BookingModal';
 import AllCategoriesCart from './AllCategoriesCart';
 
 const Allcategory = () => {
     const allCategories = useLoaderData();
+    const [bookingItems, setbookingItems] = useState(null);
     
     return (
         <div>
@@ -16,11 +18,15 @@ const Allcategory = () => {
                 <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
                 {
-                    allCategories.map(allCategorie => <AllCategoriesCart key={allCategorie._id} allCategorie={allCategorie}></AllCategoriesCart>)
+                    allCategories.map(allCategorie => <AllCategoriesCart key={allCategorie._id} allCategorie={allCategorie} setbookingItems={setbookingItems}></AllCategoriesCart>)
                 }
 
                 </div>
             </div>
+            {
+                bookingItems && 
+                <BookingModal bookingItems={bookingItems} key={bookingItems._id}></BookingModal>
+            }
         </section>
         </div>
     );

@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AllCategoriesCart = ({ allCategorie }) => {
+const AllCategoriesCart = ({ allCategorie, setbookingItems }) => {
     const { img, title, original_price, author_name, location, published_date, years_use, details, resale_price } = allCategorie;
+
+
+
     return (
         <div>
             <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
@@ -38,10 +41,11 @@ const AllCategoriesCart = ({ allCategorie }) => {
                     </button>
                 </div>
                 <div className="flex flex-col justify-between space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
-                    <button className="px-6 py-2 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Get started</button>
-                    <button className="px-6 py-2 text-lg font-normal border rounded dark:bg-gray-100 dark:text-gray-900 dark:border-gray-300">Book now</button>
+                    <Link to='/'><button className="px-6 py-2 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Go To Back</button></Link>
+                    <label onClick={() => setbookingItems(allCategorie)} htmlFor="booking-modal" className="px-6 cursor-pointer py-2 text-lg font-normal border rounded dark:bg-gray-100 dark:text-gray-900 dark:border-gray-300" > Book now </label>
                 </div>
             </div>
+            
         </div>
     );
 };
