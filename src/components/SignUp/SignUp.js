@@ -1,57 +1,60 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
+import useToken from '../../Hooks/useToken';
 
 const SignUp = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser,signInWithGoogle, updateUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, updateUser } = useContext(AuthContext);
     const [signError, setSignUPError] = useState('');
+    const [createdUserEmail, setCreateUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
 
-
-    // if(token){
-    //     navigate('/');
-    // }
+    if(token){
+        navigate('/');
+    }
 
     const handleSignUp = (data) => {
         console.log(data);
         createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            toast.success('User Created Successfully.');
-            const userInfo = {
-                displayName: data.name
-            }
-            updateUser(userInfo)
-                .then(() => {
-                    saveUserDatabase(data.name, data.email, data.accountName);
-                 })
-                .catch(err => console.log(err));
-            
-           
-        })
-        .catch(error => {
-            console.log(error);
-            setSignUPError(error.message)
-        });
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('User Created Successfully.');
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUserDatabase(data.name, data.email, data.accountName);
+                    })
+                    .catch(err => console.log(err));
+
+
+            })
+            .catch(error => {
+                console.log(error);
+                setSignUPError(error.message)
+            });
 
     }
 
     const handleGoogle = () => {
         signInWithGoogle()
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            toast.success('User Created Successfully.')
-        }) 
-        .catch(error => console.error(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('User Created Successfully.')
+            })
+            .catch(error => console.error(error))
     }
 
     const saveUserDatabase = (name, email, accountName) => {
-        const user = {name, email, accountName};
+        const user = { name, email, accountName };
         fetch(`http://localhost:5000/users`, {
             method: "POST",
             headers: {
@@ -59,13 +62,16 @@ const SignUp = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-            // setCreateUserEmail(email);
-            console.log(data);
+            .then(res => res.json())
+            .then(data => {
+                setCreateUserEmail(email);
+                console.log(data);
+               
 
-        })
+            })
     }
+
+   
 
 
     return (
@@ -99,7 +105,7 @@ const SignUp = () => {
                         <select
                             {...register("accountName", { required: "users is required" })}
                             className="select select-bordered w-full  text-black">
-                                <option disabled>select Creates</option>
+                            <option disabled>select Creates</option>
                             <option>Seller</option>
                             <option>Buyer</option>
                         </select>
