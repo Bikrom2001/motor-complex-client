@@ -7,7 +7,7 @@ import ErrorPage from "../components/Share/ErrorPage/ErrorPage";
 import SignUp from "../components/SignUp/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
-import DashBoard from "../Pages/Dashboard/DashBoard";
+import MyOrders from "../Pages/MyOrders/MyOrders";
 import PrivateRoutes from "./PrivateRoutes";
 
 
@@ -51,10 +51,10 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '/dashboard',
-                element: <DashBoard></DashBoard>
+                element: <MyOrders></MyOrders>
             },
             {
-                
+
             }
         ]
     }
