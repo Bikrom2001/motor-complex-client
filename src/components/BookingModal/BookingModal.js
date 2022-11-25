@@ -1,14 +1,54 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 
-const BookingModal = ({bookingItems}) => {
+const BookingModal = ({bookingItems, setbookingItems}) => {
 
-    const {resale_price} = bookingItems;
+    const {resale_price, img} = bookingItems;
     const {user} = useContext(AuthContext);
 
 
+
     const handleBooking = (event) => {
-        
+        event.preventDefault();
+        const form = event.target;
+        const mettingLocations = form.mettingLocations.value;
+        const number = form.number.value;
+
+
+        const booking = {
+            loginEmail: user.email,
+            userName: user.displayName,
+            bookingName: bookingItems.title,
+            mettLocation: mettingLocations,
+            number,
+            price: resale_price,
+            image: img
+        }
+       
+
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setbookingItems(null);
+                    toast.success('Booking confirmed');
+                    
+                }
+                else {
+                    toast.error(data.message);
+                }
+            })
+
+
+
     }
 
 
@@ -20,7 +60,7 @@ const BookingModal = ({bookingItems}) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{bookingItems?.title}</h3>
 
-                    <form  className="space-y-6 pt-8">
+                    <form onSubmit={handleBooking}  className="space-y-6 pt-8">
                         <div className="space-y-1 text-sm">
                             <input type="text" name="date" id="date" disabled defaultValue={user?.displayName}  className="w-full text-base px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
@@ -32,10 +72,10 @@ const BookingModal = ({bookingItems}) => {
                         </div>
                        
                         <div className="space-y-1 text-sm">
-                            <input type="text" name="number" id="number" placeholder="Phone Number" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
+                            <input required type="text" name="number" id="number" placeholder="Phone Number" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
                         <div className="space-y-1 text-sm">
-                            <input type="text" name="mettingLocations" id="mettingLocations" placeholder="meeting location" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
+                            <input required type="text" name="mettingLocations" id="mettingLocations" placeholder="meeting location" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
                        
                         <button type='submit' className="block w-full p-3 text-center rounded-sm text-white bg-gradient-to-r from-primary to-secondary">SUBMIT</button>

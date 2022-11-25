@@ -25,7 +25,7 @@ const Allcategory = () => {
             </div>
             {
                 bookingItems && 
-                <BookingModal bookingItems={bookingItems} key={bookingItems._id}></BookingModal>
+                <BookingModal bookingItems={bookingItems} key={bookingItems._id} setbookingItems={setbookingItems}></BookingModal>
             }
         </section>
         </div>
