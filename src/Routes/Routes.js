@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Allcategory from "../components/allCategories/Allcategory";
 import Blogs from "../components/Blogs/Blogs";
 import Login from "../components/Login/Login";
 import Home from "../components/Pages/Home/Home/Home";
@@ -6,6 +7,7 @@ import ErrorPage from "../components/Share/ErrorPage/ErrorPage";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../Layout/Main";
 import DashBoard from "../Pages/Dashboard/DashBoard";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,11 @@ const router = createBrowserRouter([
                 element: <Blogs></Blogs>
             },
             {
+                path: '/allcategory/:id',
+                element: <Allcategory></Allcategory>,
+                loader: ({params}) => fetch(`http://localhost:5000/allcategory/${params.id}`)
+            },
+            {
                 path: '/login',
                 element: <Login></Login>
             },
@@ -39,7 +46,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashBoard></DashBoard>
+        element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>
     }
 ])
 

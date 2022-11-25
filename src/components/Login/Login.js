@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link} from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 import './Login.css';
@@ -10,7 +10,10 @@ const Login = () => {
     const { register,formState: { errors }, handleSubmit } = useForm();
     const {signIn, signInWithGoogle} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
+    const location = useLocation(); 
+    const navigate = useNavigate();
    
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = data => {
         console.log(data);
@@ -19,6 +22,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             toast.success('User login Successfully.',{autoClose: '1500'})
+            navigate(from, {replace: true});
             
         })
         .catch(error => {
