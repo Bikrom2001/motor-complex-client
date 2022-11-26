@@ -7,7 +7,10 @@ import ErrorPage from "../components/Share/ErrorPage/ErrorPage";
 import SignUp from "../components/SignUp/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import AddProduct from "../Pages/AddProduct/AddProduct";
+import AllUsers from "../Pages/AllUsers/AllUsers";
 import MyOrders from "../Pages/MyOrders/MyOrders";
+import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoutes from "./PrivateRoutes";
 
 
@@ -54,8 +57,14 @@ const router = createBrowserRouter([
                 element: <MyOrders></MyOrders>
             },
             {
-
-            }
+                path: '/dashboard/users',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path: '/dashboard/addproducts',
+                element: <AddProduct></AddProduct>
+            },
+           
         ]
     }
 ])

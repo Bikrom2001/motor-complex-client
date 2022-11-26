@@ -39,11 +39,11 @@ const BookingModal = ({bookingItems, setbookingItems}) => {
                 console.log(data);
                 if (data.acknowledged) {
                     setbookingItems(null);
-                    toast.success('Booking confirmed');
+                    toast.success('Booking confirmed', {autoClose: '1500'});
                     
                 }
                 else {
-                    toast.error(data.message);
+                    toast.error(data.message, {autoClose: '1500'});
                 }
             })
 

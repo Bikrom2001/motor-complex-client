@@ -24,7 +24,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Created Successfully.');
+                toast.success('User Created Successfully.', {autoClose: '1500'});
                 const userInfo = {
                     displayName: data.name
                 }
@@ -48,7 +48,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Created Successfully.')
+                toast.success('User Created Successfully.', {autoClose: '1500'})
             })
             .catch(error => console.error(error))
     }

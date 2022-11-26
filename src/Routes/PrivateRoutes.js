@@ -9,7 +9,6 @@ const PrivateRoutes = ({children}) => {
     if(loading){
         return <div className='h-screen w-full flex items-center justify-center'><div className="w-16 h-16  border-4 border-dashed rounded-full animate-spin dark:border-yellow-500"></div></div>
     }
-
     if(user){
         return children ;
     }
