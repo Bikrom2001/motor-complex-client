@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import Loading from '../../components/Share/Loading/Loading';
 import { AuthContext } from '../../context/AuthProvider';
 
@@ -25,6 +26,26 @@ const ManageProduct = () => {
         }
     })
 
+    const handleDeleteDoctor = id => {
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                refetch();
+                toast.success(`Product deleted successfully`)
+            }
+            
+        })
+    }
+
+
+
 
     if(isLoading){
         return <Loading></Loading>
@@ -44,6 +65,7 @@ const ManageProduct = () => {
                             <th>Product images</th>
                             <th>Price</th>
                             <th>Location</th>
+                            <th>Date</th>
                             <th>Delete</th>
                             <th>Advertise</th>
                         </tr>
@@ -60,8 +82,9 @@ const ManageProduct = () => {
                                     </div></td>
                                     <td>{product.price}</td>
                                     <td>{product.location}</td>
-                                    <td><button className='btn btn-sm btn-error'>Delete</button></td>
-                                    <td>Blue</td>
+                                    <td>{product.purchase}</td>
+                                    <td><button onClick={() => handleDeleteDoctor(product._id)} className='btn btn-sm btn-error'>Delete</button></td>
+                                    <td><button className='btn btn-sm btn-success'>advertised</button></td>
                                 </tr>
         )
                         }

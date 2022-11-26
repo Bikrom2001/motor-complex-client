@@ -48,12 +48,12 @@ const Header = () => {
           </li>
           <li>
             <Link
-              to='/shop'
-              aria-label='Shop'
-              title='Shop'
+              to='/advertised'
+              aria-label='advertised'
+              title='advertised'
               className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
             >
-              Shop
+              Advertised
             </Link>
           </li>
           <li>
@@ -185,12 +185,12 @@ const Header = () => {
                   <ul className='space-y-4'>
                     <li>
                       <Link
-                        to='/shop'
-                        aria-label='Shop'
-                        title='Shop'
+                        to='/advertised'
+                        aria-label='advertised'
+                        title='advertised'
                         className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                       >
-                        Shop
+                        Advertised
                       </Link>
                     </li>
                     <li>

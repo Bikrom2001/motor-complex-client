@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Advertised from "../components/Advertised/Advertised";
 import Allcategory from "../components/allCategories/Allcategory";
 import Blogs from "../components/Blogs/Blogs";
 import Login from "../components/Login/Login";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/advertised',
+                element: <Advertised></Advertised>
             }
         ]
     },
