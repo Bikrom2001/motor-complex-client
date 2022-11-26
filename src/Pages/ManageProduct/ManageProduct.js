@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Share/Loading/Loading';
 import { AuthContext } from '../../context/AuthProvider';
+import ManageProductCart from './ManageProductCart';
 
 const ManageProduct = () => {
 
@@ -45,6 +46,8 @@ const ManageProduct = () => {
     }
 
 
+   
+
 
 
     if(isLoading){
@@ -72,21 +75,7 @@ const ManageProduct = () => {
                     </thead>
                     <tbody>
                         {
-                            products?.map((product, i) => 
-                                <tr>
-                                    <th>{i + 1}</th>
-                                    <td><div className="avatar online">
-                                        <div className="w-14 rounded-full">
-                                            <img src={product.image} alt='' />
-                                        </div>
-                                    </div></td>
-                                    <td>{product.price}</td>
-                                    <td>{product.location}</td>
-                                    <td>{product.purchase}</td>
-                                    <td><button onClick={() => handleDeleteDoctor(product._id)} className='btn btn-sm btn-error'>Delete</button></td>
-                                    <td><button className='btn btn-sm btn-success'>advertised</button></td>
-                                </tr>
-        )
+                            products?.map((product, i) => <ManageProductCart handleDeleteDoctor={handleDeleteDoctor} i={i} product={product} key={product._id}></ManageProductCart>)
                         }
                     </tbody>
                 </table>
