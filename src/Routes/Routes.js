@@ -9,6 +9,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import AllUsers from "../Pages/AllUsers/AllUsers";
+import ManageProduct from "../Pages/ManageProduct/ManageProduct";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoutes from "./PrivateRoutes";
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addproducts',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/manageproduct',
+                element: <ManageProduct></ManageProduct>
             },
            
         ]

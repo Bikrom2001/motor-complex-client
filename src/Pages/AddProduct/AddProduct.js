@@ -1,13 +1,65 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/AuthProvider';
 
 const AddProduct = () => {
 
+    const {user} = useContext(AuthContext);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const imgHostingKey = process.env.REACT_APP_imgbb_key;
+    const navigate = useNavigate();
+  
 
     const handlerAddProduct = data => {
-        console.log(data);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(imgData => {
+            console.log(imgData);
+            if(imgData.success){
+                console.log(imgData.data.url);
+                const product = {
+                    ProductName: data.name,
+                        email: user.email,
+                        location: data.location,
+                        image: imgData.data.url,
+                        Phone: data.Phone,
+                        price: data.price,
+                        purchase: data.purchase,
+                        category: data.category,
+                        condition: data.condition,
+                        description: data.description
+                }
+
+                 // save product information to the database
+                 fetch('http://localhost:5000/product', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(product)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+                        toast.success(`${data.name} is added successfully`);
+                        navigate('/dashboard/manageproduct')
+                    })
+            }
+        })
     }
+
+
 
 
     return (
