@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Advertised from "../components/Advertised/Advertised";
+import Aveillage from "../components/Advertised/Aveillage";
 import Allcategory from "../components/allCategories/Allcategory";
 import Blogs from "../components/Blogs/Blogs";
 import Login from "../components/Login/Login";
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/advertised',
-                element: <Advertised></Advertised>
+                element: <Aveillage></Aveillage>
             }
         ]
     },
