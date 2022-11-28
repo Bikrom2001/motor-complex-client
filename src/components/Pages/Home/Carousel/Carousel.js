@@ -29,10 +29,10 @@ const Carousel = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-md">
-                <h1 className="text-4xl font-bold leading-none sm:text-5xl">Helping Your
-                  <span className="dark:text-violet-400">Stay Happy One</span>delectus
+                <h1 className="text-4xl font-bold leading-none sm:text-5xl">Easy way
+                  <span className="dark:text-violet-400">to find the</span>right car
                 </h1>
-                <p className="px-8 mt-8 mb-4 text-lg">Everyday We Bring Hope and Smile to the Patient We Serve</p>
+                <p className="px-8 mt-8 mb-4 text-lg">Finder is a leading digital marketplace for the automotive industry that connects car shoppers with sellers.</p>
                 <div className="flex flex-wrap justify-center">
                   <button className="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Get started</button>
                   <button className="px-8 py-3 m-2 text-lg border rounded dark:text-gray-50 dark:border-white">Learn more</button>
@@ -50,8 +50,8 @@ const Carousel = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-md">
-                <h1 className="text-4xl font-bold leading-none sm:text-5xl">We Provide
-                  <span className="dark:text-violet-400">Best Healthcare</span>delectus
+                <h1 className="text-4xl font-bold leading-none sm:text-5xl">Say helo to
+                  <span className="dark:text-violet-400">best car</span>dealer platform
                 </h1>
                 <p className="px-8 mt-8 mb-4 text-lg">Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum</p>
                 <div className="flex flex-wrap justify-center">

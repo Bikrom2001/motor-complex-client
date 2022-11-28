@@ -14,7 +14,7 @@ const SignUp = () => {
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
-    if(token){
+    if (token) {
         navigate('/');
     }
 
@@ -24,7 +24,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Created Successfully.', {autoClose: '1500'});
+                toast.success('User Created Successfully.', { autoClose: '1500' });
                 const userInfo = {
                     displayName: data.name
                 }
@@ -48,14 +48,14 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Created Successfully.', {autoClose: '1500'})
+                toast.success('User Created Successfully.', { autoClose: '1500' })
             })
             .catch(error => console.error(error))
     }
 
     const saveUserDatabase = (name, email, accountName) => {
         const user = { name, email, accountName };
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://motor-complex-server.vercel.app/users`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -66,12 +66,12 @@ const SignUp = () => {
             .then(data => {
                 setCreateUserEmail(email);
                 console.log(data);
-               
+
 
             })
     }
 
-   
+
 
 
     return (

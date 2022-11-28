@@ -1,3 +1,41 @@
+# Motor Complex-second-hand-products-selling
+Motor Complex-second-hand-products-selling
+
+## Live Link
+Hosted in Firebase -> [Life of IDoctor -service-website-apps-client]()
+
+## Live server Link
+Hosted in vercel -> [Motor Complex-second-hand-products-selling-website-apps-servers](https://motor-complex-server.vercel.app/)
+
+## Motor Complex-second-hand-products-selling
+Finder is a leading digital marketplace for the automotive industry that connects car shoppers with sellers
+
+## Description For Website 
+1. Motor Complex-second-hand-products-selling-website-apps
+2. This website has a create blog page and 4 Frequently Asked Questions.
+3. Data is loaded dynamically from server and that data is shown in other components
+4. This website is powered by Taster and Sources data from a dashboard.
+5. Login and user created and your profile on firebase or user data save database
+6. This website uses Firebase authentication and verfiy user tokens and admin verfiy
+7. this website admin bashboard and add product and my product 
+
+## React Router Dom v6.4 
+Documentation Link -> [Link](https://reactrouter.com/en/main/start/overview)
+
+## Resources & Credits
+Tailwind Components -> 
+[Mamba UI](https://www.mambaui.com/)
+[Kitwind](https://daisyui.com/)
+
+## Other Resources
+Icon -> [react icons](https://react-icons.github.io/react-icons/)
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

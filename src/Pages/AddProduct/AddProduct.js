@@ -6,12 +6,12 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const AddProduct = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imgHostingKey = process.env.REACT_APP_imgbb_key;
     const navigate = useNavigate();
-  
+
 
     const handlerAddProduct = data => {
         const image = data.image[0];
@@ -22,13 +22,13 @@ const AddProduct = () => {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(imgData => {
-            console.log(imgData);
-            if(imgData.success){
-                console.log(imgData.data.url);
-                const product = {
-                    ProductName: data.name,
+            .then(res => res.json())
+            .then(imgData => {
+                console.log(imgData);
+                if (imgData.success) {
+                    console.log(imgData.data.url);
+                    const product = {
+                        ProductName: data.name,
                         email: user.email,
                         location: data.location,
                         image: imgData.data.url,
@@ -38,25 +38,25 @@ const AddProduct = () => {
                         category: data.category,
                         condition: data.condition,
                         description: data.description
-                }
+                    }
 
-                 // save product information to the database
-                 fetch('http://localhost:5000/product', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                        authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body: JSON.stringify(product)
-                })
-                    .then(res => res.json())
-                    .then(result => {
-                        console.log(result);
-                        toast.success(`${data.name} is added successfully`);
-                        navigate('/dashboard/manageproduct')
+                    // save product information to the database
+                    fetch('https://motor-complex-server.vercel.app/product', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(product)
                     })
-            }
-        })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log(result);
+                            toast.success(`${data.name} is added successfully`);
+                            navigate('/dashboard/manageproduct')
+                        })
+                }
+            })
     }
 
 
@@ -84,25 +84,25 @@ const AddProduct = () => {
                         <input type="text" {...register("location", { required: "location is required" })} className="input input-bordered w-full " placeholder='Location' />
                         {errors.location && <p className='text-orange-400'>{errors.location?.message}</p>}
                     </div>
-                   <div className='grid grid-row md:grid-cols-2 gap-2'>
-                     <div className="form-control w-full ">
-                        <label className="label">
-                            <span className="text-white">Phone</span>
-                        </label>
-                        <input type="text" {...register("Phone", { required: "phone is required" })} className="input input-bordered w-full " placeholder='phone' />
-                        {errors.phone && <p className='text-orange-400'>{errors.phone?.message}</p>}
-                    </div>
-                    <div>
-                    <div className="form-control w-full ">
-                        <label className="label">
-                            <span className="text-white">Images</span>
-                        </label>
-                        <input type="file" {...register("image", { required: "image is required" })} className="input input-bordered w-full " placeholder='phone' />
-                        {errors.phone && <p className='text-orange-400'>{errors.phone?.message}</p>}
-                    </div>
-                    </div>
+                    <div className='grid grid-row md:grid-cols-2 gap-2'>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="text-white">Phone</span>
+                            </label>
+                            <input type="text" {...register("Phone", { required: "phone is required" })} className="input input-bordered w-full " placeholder='phone' />
+                            {errors.phone && <p className='text-orange-400'>{errors.phone?.message}</p>}
+                        </div>
+                        <div>
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="text-white">Images</span>
+                                </label>
+                                <input type="file" {...register("image", { required: "image is required" })} className="input input-bordered w-full " placeholder='phone' />
+                                {errors.phone && <p className='text-orange-400'>{errors.phone?.message}</p>}
+                            </div>
+                        </div>
 
-                   </div>
+                    </div>
                     <div className='grid grid-row md:grid-cols-2 gap-2'>
                         <div className="form-control w-full ">
                             <label className="label">
@@ -150,7 +150,7 @@ const AddProduct = () => {
                             <span className="text-white">Description</span>
                         </label>
                         <textarea  {...register("description", { required: "description is required" })} className="input input-bordered h-16"
-                             rows="16" placeholder='Description ' />
+                            rows="16" placeholder='Description ' />
                         {errors.description && <p className='text-orange-400'>{errors.description?.message}</p>}
                     </div>
 

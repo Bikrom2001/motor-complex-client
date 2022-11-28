@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: '/allcategory/:id',
                 element: <Allcategory></Allcategory>,
-                loader: ({params}) => fetch(`http://localhost:5000/allcategory/${params.id}`)
+                loader: ({ params }) => fetch(`https://motor-complex-server.vercel.app/allcategory/${params.id}`)
             },
             {
                 path: '/login',
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
-        children:[
+        children: [
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
@@ -78,10 +78,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`) 
+                loader: ({ params }) => fetch(`https://motor-complex-server.vercel.app/bookings/${params.id}`)
             },
-            
-           
+
+
         ]
     }
 ])

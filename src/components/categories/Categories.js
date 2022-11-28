@@ -6,14 +6,14 @@ const Categories = () => {
 
     // const [category, setCategory] = useState([]);
 
-    const {data:category = []} = useQuery({
-        queryKey:['category'],
-        queryFn: () => fetch('http://localhost:5000/category')
-        .then(res => res.json())
+    const { data: category = [] } = useQuery({
+        queryKey: ['category'],
+        queryFn: () => fetch('https://motor-complex-server.vercel.app/category')
+            .then(res => res.json())
     })
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/category')
+    //     fetch('https://motor-complex-server.vercel.app/category')
     //         .then(res => res.json())
     //         .then(data => setCategory(data))
     // }, [])
@@ -29,9 +29,9 @@ const Categories = () => {
                 </div>
                 <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-                {
-                    category.map(categor => <CategoriesCart key={categor._id} categor={categor}></CategoriesCart>)
-                }
+                    {
+                        category.map(categor => <CategoriesCart key={categor._id} categor={categor}></CategoriesCart>)
+                    }
 
                 </div>
             </div>

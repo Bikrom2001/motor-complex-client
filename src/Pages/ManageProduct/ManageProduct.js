@@ -13,7 +13,7 @@ const ManageProduct = () => {
         queryKey: ['product'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/product?email=${user?.email}`, {
+                const res = await fetch(`https://motor-complex-server.vercel.app/product?email=${user?.email}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -28,29 +28,29 @@ const ManageProduct = () => {
     })
 
     const handleDeleteDoctor = id => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://motor-complex-server.vercel.app/product/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
 
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount > 0){
-                refetch();
-                toast.success(`Product deleted successfully`)
-            }
-            
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`Product deleted successfully`)
+                }
+
+            })
     }
 
 
-   
 
 
 
-    if(isLoading){
+
+    if (isLoading) {
         return <Loading></Loading>
     }
 

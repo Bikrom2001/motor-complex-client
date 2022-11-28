@@ -9,14 +9,14 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users`);
+            const res = await fetch(`https://motor-complex-server.vercel.app/users`);
             const data = await res.json();
             return data;
         }
     });
 
     const handleMakeAdmin = (id) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://motor-complex-server.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const AllUsers = () => {
     const handlerDeleteUsers = id => {
         const proseed = window.confirm('Are you sure , you went to cancel this .User');
         if (proseed) {
-            fetch(`http://localhost:5000/users/admin/${id}`, {
+            fetch(`https://motor-complex-server.vercel.app/users/admin/${id}`, {
                 method: 'DELETE',
 
             })

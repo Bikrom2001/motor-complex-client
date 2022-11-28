@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 const Review = () => {
     return (
         <div className="dark:bg-gray-800 dark:text-gray-50 py-8">
-            <div className="space-y-2 text-center mb">
-                <h2 className="text-3xl font-bold">Our Service category</h2>
-                <p className="font-serif text-sm dark:text-gray-400">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+            <div className="space-y-2 text-center mb-8">
+                <h2 className="text-3xl font-bold">Our Blogs</h2>
             </div>
             <div className="container grid grid-cols-12 mx-auto">
 

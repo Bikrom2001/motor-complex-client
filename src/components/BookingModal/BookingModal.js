@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 
-const BookingModal = ({bookingItems, setbookingItems}) => {
+const BookingModal = ({ bookingItems, setbookingItems }) => {
 
-    const {resale_price, img} = bookingItems;
-    const {user} = useContext(AuthContext);
+    const { resale_price, img } = bookingItems;
+    const { user } = useContext(AuthContext);
 
 
 
@@ -25,9 +25,9 @@ const BookingModal = ({bookingItems, setbookingItems}) => {
             price: resale_price,
             image: img
         }
-       
 
-        fetch('http://localhost:5000/bookings', {
+
+        fetch('https://motor-complex-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,11 +39,11 @@ const BookingModal = ({bookingItems, setbookingItems}) => {
                 console.log(data);
                 if (data.acknowledged) {
                     setbookingItems(null);
-                    toast.success('Booking confirmed', {autoClose: '1500'});
-                    
+                    toast.success('Booking confirmed', { autoClose: '1500' });
+
                 }
                 else {
-                    toast.error(data.message, {autoClose: '1500'});
+                    toast.error(data.message, { autoClose: '1500' });
                 }
             })
 
@@ -60,24 +60,24 @@ const BookingModal = ({bookingItems, setbookingItems}) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{bookingItems?.title}</h3>
 
-                    <form onSubmit={handleBooking}  className="space-y-6 pt-8">
+                    <form onSubmit={handleBooking} className="space-y-6 pt-8">
                         <div className="space-y-1 text-sm">
-                            <input type="text" name="date" id="date" disabled defaultValue={user?.displayName}  className="w-full text-base px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
+                            <input type="text" name="date" id="date" disabled defaultValue={user?.displayName} className="w-full text-base px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
                         <div className="space-y-1 text-sm">
-                            <input type="email" disabled defaultValue={user?.email}  name="email" id="Email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
+                            <input type="email" disabled defaultValue={user?.email} name="email" id="Email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
                         <div className="space-y-1 text-sm">
-                        <input type="text" name="names" disabled  id="name" defaultValue={resale_price} placeholder="Full Name" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
+                            <input type="text" name="names" disabled id="name" defaultValue={resale_price} placeholder="Full Name" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
-                       
+
                         <div className="space-y-1 text-sm">
                             <input required type="text" name="number" id="number" placeholder="Phone Number" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
                         <div className="space-y-1 text-sm">
                             <input required type="text" name="mettingLocations" id="mettingLocations" placeholder="meeting location" className="w-full px-4 py-3 rounded-md border border-black dark:text-black focus:dark:border-violet-400" />
                         </div>
-                       
+
                         <button type='submit' className="block w-full p-3 text-center rounded-sm text-white bg-gradient-to-r from-primary to-secondary">SUBMIT</button>
                     </form>
 
