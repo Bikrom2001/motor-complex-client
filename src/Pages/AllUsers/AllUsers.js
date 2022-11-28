@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const AllUsers = () => {
+
+    const [deleteUser, setDeleteUser] = useState();
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -31,6 +33,25 @@ const AllUsers = () => {
     }
 
 
+    const handlerDeleteUsers = id => {
+        const proseed = window.confirm('Are you sure , you went to cancel this .User');
+        if (proseed) {
+            fetch(`http://localhost:5000/users/admin/${id}`, {
+                method: 'DELETE',
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Delete successfully');
+                        const remaining = deleteUser.filter(ord => ord._id !== id);
+                        setDeleteUser(remaining);
+                    }
+                })
+        }
+    }
+
+
 
     return (
         <div>
@@ -49,13 +70,13 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                      {
-                        users.map((user, i) =>    <tr key={user._id} >
+                        users?.map((user, i) =>    <tr key={user._id} >
                             <th>{i+1}</th>
                             <td>{user?.name}</td>
                             <td>{user?.email}</td>
                             <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
                             <td>{user?.accountName}</td>
-                            <td><button className='btn text-white btn-xs btn-danger'>Delete</button></td>
+                            <td><button onClick={() => handlerDeleteUsers(user._id)} className='btn text-white btn-xs btn-danger'>Delete</button></td>
                         </tr>)
                      }
                     </tbody>
