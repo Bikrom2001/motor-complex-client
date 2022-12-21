@@ -2,50 +2,75 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Review = () => {
+
+    const blogs = [
+        {
+            id: "01",
+            title: " Neque volutpat facilisis sollicit mus tempus.",
+            img: "https://images.pexels.com/photos/4062463/pexels-photo-4062463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            details: "Libero consectetuer fames montes habitasse lorem hendrerit dictumst sit blandit. Commodo justo. Blandit lobortis metus et.",
+            time: "Feb 18th 2021",
+        },
+        {
+            id: "02",
+            title: " Neque volutpat facilisis sollicit mus tempus.",
+            img: "https://images.pexels.com/photos/794435/pexels-photo-794435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            details: "Libero consectetuer fames montes habitasse lorem hendrerit dictumst sit blandit. Commodo justo. Blandit lobortis metus et.",
+            time: "Feb 18th 2021",
+        },
+        {
+            id: "03",
+            title: " Neque volutpat facilisis sollicit mus tempus.",
+            img: "https://images.pexels.com/photos/898336/pexels-photo-898336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            details: "Libero consectetuer fames montes habitasse lorem hendrerit dictumst sit blandit. Commodo justo. Blandit lobortis metus et.",
+            time: "Feb 18th 2021",
+        },
+        {
+            id: "04",
+            title: " Neque volutpat facilisis sollicit mus tempus.",
+            img: "https://images.pexels.com/photos/337909/pexels-photo-337909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            details: "Libero consectetuer fames montes habitasse lorem hendrerit dictumst sit blandit. Commodo justo. Blandit lobortis metus et.",
+            time: "Nov 20th 2022",
+        },
+
+    ]
+
+
     return (
-        <div className="dark:bg-gray-800 dark:text-gray-50 py-8">
-            <div className="space-y-2 text-center mb-8">
-                <h2 className="text-3xl font-bold">Our Blogs</h2>
-            </div>
-            <div className="container grid grid-cols-12 mx-auto">
+        <section class="dark:bg-gray-800 dark:text-gray-100">
+            <div class="container px-6 py-8 mx-auto">
+                <div className="space-y-2 text-center">
+                    <h2 className="text-3xl font-bold">Blogs Post </h2>
+                    <p className="font-serif text-sm dark:text-gray-400">We buy and sale barand new car and also used car of any brand</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 mt-6 md:mt-16 md:grid-cols-2">
+
+                    {
+                        blogs?.map(blog => <>
+                            <div class="lg:flex">
+                                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src={blog?.img} alt="" />
+
+                                <div class="py-1 lg:mx-6">
+                                    <Link class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                                        <p>{blog?.title}</p>
+                                    </Link>
+
+                                    <p className='text-justify text-gray-400 mt-5 mb-3'>{blog.details}</p>
+
+                                    <time datetime="2021-02-18" className="text-sm  text-yellow-400">{blog.time}</time>
+
+                                </div>
+                            </div>
 
 
-                <div className="flex flex-col justify-center col-span-12 align-middle bg-no-repeat bg-cover dark:bg-gray-700 lg:col-span-6 lg:h-auto rounded-md " >
-                    <div className="flex flex-col items-center p-8 py-12 text-center">
-                        <span>12 June 2022</span>
-                        <h1 className="py-4 text-5xl font-bold">The Continued Growth of Delivery and Ride share-2022</h1>
-                        <p className="pb-6">Seamlessly architect technically sound customer service without client-focused team driven opportunities without leveraged materials.</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7">
-                            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                        </svg>
-                    </div>
-                </div>
-                <div className="flex flex-col col-span-12 p-6 divide-y lg:col-span-6 lg:p-10 divide-gray-700">
-                    <div className="pt-6 pb-4 space-y-2">
-                        <span>May 24, 2022</span>
-                        <h1 className="text-3xl font-bold">Automotive Tips for Delivery & Rideshare Drivers</h1>
-                        <p>Holisticly strategize real-time imperatives with focus imperatives wireless catalysts.</p>
-                        <Link rel="noopener noreferrer" href="#" className="inline-flex items-center py-2 space-x-2 text-sm dark:text-violet-400">
-                            <span>Read more</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                            </svg>
-                        </Link>
-                    </div>
-                    <div className="pt-6 pb-4 space-y-2">
-                        <span>30 June 2022</span>
-                        <h1 className="text-3xl font-bold">How long does it take to order a rent car?</h1>
-                        <p>Holisticly strategize real-time imperatives with focus imperatives wireless catalysts.</p>
-                        <Link rel="noopener noreferrer" href="#" className="inline-flex items-center py-2 space-x-2 text-sm dark:text-violet-400">
-                            <span>Read more</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                            </svg>
-                        </Link>
-                    </div>
+                        </>)
+                    }
+
+
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

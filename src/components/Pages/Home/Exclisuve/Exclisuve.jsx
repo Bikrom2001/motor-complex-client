@@ -32,7 +32,7 @@ const Exclisuve = () => {
                     <div className='relative'>
                         <span className='text-4xl absolute opacity-20 font-bold left-[-20px] top-[-5] text-gray-300'>{data.number}</span>
                         <h3 className='mb-3 mt-3 font-semibold text-3xl'>{data.title}</h3>
-                        <p className='text-justify'>
+                        <p className='text-justify text-gray-400'>
                          {data.details}
                         </p>
                     </div>
